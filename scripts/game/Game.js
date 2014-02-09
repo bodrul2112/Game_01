@@ -2,17 +2,15 @@
 
 define(["thirdparty/jquery",
         "services/TemplateService",
-        "game/canvas/GameCanvas",
-        "game/controllers/GameLoop"], 
+        "game/controllers/GameLoop",
+        "game/controllers/stages/Stage01"], 
         
-    function( jQuery, tpl, GameCanvas, GameLoop ) {
+    function( jQuery, tpl, GameLoop, Stage01 ) {
 	
 		var Game = function(  ) {
 			
-			this.m_oGameCanvas = new GameCanvas();
 			this.m_oGameLoop = new GameLoop(); 
-			
-			
+			this.m_oGameLoop.setStage(new Stage01());
 			this.m_oGameLoop.start();
 		}
 		

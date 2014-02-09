@@ -4,11 +4,13 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 	
 	var GameCanvas = function(  ) {
 		
-		this.m_eCanvas = document.getElementById("gameCanvas");
-		this.m_oContext = this.m_eCanvas.getContext("2d");
+		var canv = '<canvas id="mycanvas" width="'+ $(window).width() +'" height="'+ $(window).height() +'"></canvas>';
+		this.m_eCanvas = $(canv);
+		$('.mainContainer').append( this.m_eCanvas );
+		
+		this.m_oContext = this.m_eCanvas[0].getContext("2d");
 		
 		this.m_bDragging = false;
-		
 		this._postProcess();
 	}
 	
@@ -22,7 +24,7 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 		$(this.m_eCanvas).on("mousedown", function(e) {
 			
 			this.m_bDragging = true;
-			this._touch(e);
+			this._touch(e); 
 			
 		}.bind(this));
 		

@@ -9,9 +9,13 @@ define(["thirdparty/jquery",
 		var BaseStage = function(  ) 
 		{
 			this.m_oScene = new Scene();
-			
 			this.m_oHelicopter = new Helicopter();
-			this.m_oScene.addToMiddleGround( this.m_oHelicopter );
+			this.m_oScene.addToMiddleground( this.m_oHelicopter );
+			
+			var oCoords = this.m_oHelicopter.getBasicDrawable().getCoords();
+			oCoords.setX( $(window).width() );
+			oCoords.setY( $(window).height() );
+			
 		}
 		
 		BaseStage.prototype.getScene = function()

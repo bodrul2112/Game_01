@@ -41,6 +41,6 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 		return this.m_pForegroundObjects;
 	}
 	
-	return Renderer;
+	return Scene;
 	
 });
