@@ -4,7 +4,7 @@ require( ["plugins/domReady"], function(domReady){
     
 	domReady(function(){
 		
-		require(["thirdparty/jquery", "game/Game"], function( jQuery, Game ) {
+		require(["thirdparty/jquery", "shims/Shims", "game/Game"], function( jQuery, Shims, Game ) {
 			
 			console.log("im here");
 			
