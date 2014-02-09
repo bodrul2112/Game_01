@@ -3,9 +3,10 @@ define(["thirdparty/jquery",
         "services/TemplateService",
         "game/controllers/Scene",
         "game/drawables/ParallaxBackground", 
+        "game/drawables/background/Cloud", 
         "game/drawables/Helicopter"], 
         
-    function( jQuery, tpl, Scene, ParallaxBackground, Helicopter ) 
+    function( jQuery, tpl, Scene, ParallaxBackground, Cloud, Helicopter ) 
     {
 		var BaseStage = function(  ) 
 		{
@@ -13,13 +14,19 @@ define(["thirdparty/jquery",
 //			this.m_oHelicopter = new Helicopter();
 //			this.m_oScene.addToMiddleground( this.m_oHelicopter );
 			
+			this.m_oScene.addToBackground( new ParallaxBackground() );
 			
-			for(var i=0; i<200; i++)
+			for(var i=0; i<50; i++)
 			{
-				this.m_oScene.addToMiddleground( new Helicopter() );
+				this.m_oScene.addToBackground( new Cloud() );
 			}
 			
-			this.m_oScene.addToBackground( new ParallaxBackground() );
+			
+			for(var i=0; i<50; i++)
+			{
+				this.m_oScene.addToForeground( new Cloud() );
+			}
+			
 			
 //			var oCoords = this.m_oHelicopter.getBasicDrawable().getCoords();
 //			oCoords.setX( $(window).width() );
