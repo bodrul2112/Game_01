@@ -1,7 +1,7 @@
 
 define(["thirdparty/jquery","services/TemplateService","game/drawables/BasicDrawable"], function( jQuery, tpl, BasicDrawable) {
 	
-	var ParallaxBackground = function(  ) 
+	var BasicBackground = function(  ) 
 	{
 		this.m_nWidth = $(window).width();
 		this.m_nHeight = $(window).height();
@@ -9,12 +9,12 @@ define(["thirdparty/jquery","services/TemplateService","game/drawables/BasicDraw
 		this.m_oGradient;
 	}
 	
-	ParallaxBackground.prototype.drawYourself = function( oContext ) 
+	BasicBackground.prototype.drawYourself = function( oContext ) 
 	{
 		oContext.fillStyle = "white"
 		oContext.fillRect(0,0,this.m_nWidth,this.m_nHeight);
 	}
 	
-	return ParallaxBackground;
+	return BasicBackground;
 	
 });
