@@ -17,15 +17,17 @@ define(["thirdparty/jquery",
 			
 			this.m_oScene.addToBackground( new ParallaxBackground() );
 			
-			for(var i=0; i<50; i++)
+			for(var i=0; i<25; i++)
 			{
 				this.m_oScene.addToBackground( new Cloud() );
 			}
 			
-			this.m_oScene.addToMiddleground( new Ball() );
+			this.m_oPlayer = new Ball();
+			
+			this.m_oScene.addToMiddleground( this.m_oPlayer  );
 			
 			
-			for(var i=0; i<50; i++)
+			for(var i=0; i<25; i++)
 			{
 				this.m_oScene.addToForeground( new Cloud() );
 			}
@@ -35,6 +37,11 @@ define(["thirdparty/jquery",
 //			oCoords.setX( $(window).width() );
 //			oCoords.setY( $(window).height() );
 			
+		}
+		
+		BaseStage.prototype.getPlayer = function()
+		{
+			return this.m_oPlayer;
 		}
 		
 		BaseStage.prototype.getScene = function()

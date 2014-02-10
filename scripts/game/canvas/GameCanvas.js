@@ -23,7 +23,7 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 	
 	GameCanvas.prototype._postProcess = function() 
 	{
-		$(this.m_eCanvas).on("mousedown", function(e) {
+		$(this.m_eCanvas).on("mousedown touchstart", function(e) {
 			
 			this.m_bDragging = true;
 			this._touch( "mousedown", e); 
@@ -39,7 +39,7 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 			
 		}.bind(this));
 		
-		$(this.m_eCanvas).on("mouseup", function(e) {
+		$(this.m_eCanvas).on("mouseup touchend touchcancel", function(e) {
 			
 			this._touch( "mouseup", e); 
 			this.m_bDragging = false;
@@ -49,8 +49,8 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 	
 	GameCanvas.prototype._touch = function( sEventName, e )
 	{
-		console.log(e.pageX);
-		console.log(e.pageY);
+//		console.log(e.pageX);
+//		console.log(e.pageY);
 		
 		for(var key in this.m_pListeners)
 		{
