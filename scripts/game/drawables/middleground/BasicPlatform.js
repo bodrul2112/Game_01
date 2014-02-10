@@ -6,6 +6,11 @@ define(["thirdparty/jquery","services/TemplateService","game/drawables/BasicDraw
 		
 		this.m_oBasicDrawable = new BasicDrawable(this);
 		this.m_oCoords = this.m_oBasicDrawable.getCoords();
+		
+		this.m_oBasicDrawable.setRemoveWhenOffScreen(true);
+		
+		
+		
 	}
 	
 	BasicPlatform.prototype.drawYourself = function( oContext ) 
