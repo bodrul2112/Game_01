@@ -12,6 +12,8 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 		
 		this.m_bDragging = false;
 		this._postProcess();
+		
+		this.m_pListeners;
 	}
 	
 	GameCanvas.prototype.get2DContext = function() {
@@ -24,7 +26,7 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 		$(this.m_eCanvas).on("mousedown", function(e) {
 			
 			this.m_bDragging = true;
-			this._touch(e); 
+			this._touch( "mousedown", e); 
 			
 		}.bind(this));
 		
@@ -32,22 +34,34 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 			
 			if(this.m_bDragging)
 			{
-				this._touch(e);
+				//this._touch("mousedragging",e);
 			}
 			
 		}.bind(this));
 		
 		$(this.m_eCanvas).on("mouseup", function(e) {
 			
+			this._touch( "mouseup", e); 
 			this.m_bDragging = false;
 			
 		}.bind(this));
 	}
 	
-	GameCanvas.prototype._touch = function( e )
+	GameCanvas.prototype._touch = function( sEventName, e )
 	{
 		console.log(e.pageX);
 		console.log(e.pageY);
+		
+		for(var key in this.m_pListeners)
+		{
+			var oBasicDrawable = this.m_pListeners[key];
+			oBasicDrawable.onEvent( sEventName, e );
+		}
+	} 
+	
+	GameCanvas.prototype.setMouseTouchListenersFromStage = function( oStage )
+	{
+		this.m_pListeners = oStage.getScene().getMouseTouchListeners();
 	} 
 	
 	return GameCanvas;

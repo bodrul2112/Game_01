@@ -4,9 +4,10 @@ define(["thirdparty/jquery",
         "game/controllers/Scene",
         "game/drawables/ParallaxBackground", 
         "game/drawables/background/Cloud", 
-        "game/drawables/Helicopter"], 
+        "game/drawables/Helicopter", 
+        "game/drawables/player/Ball"], 
         
-    function( jQuery, tpl, Scene, ParallaxBackground, Cloud, Helicopter ) 
+    function( jQuery, tpl, Scene, ParallaxBackground, Cloud, Helicopter, Ball ) 
     {
 		var BaseStage = function(  ) 
 		{
@@ -20,6 +21,8 @@ define(["thirdparty/jquery",
 			{
 				this.m_oScene.addToBackground( new Cloud() );
 			}
+			
+			this.m_oScene.addToMiddleground( new Ball() );
 			
 			
 			for(var i=0; i<50; i++)

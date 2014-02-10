@@ -41,6 +41,28 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 		return this.m_pForegroundObjects;
 	}
 	
+	Scene.prototype.getMouseTouchListeners = function()
+	{
+		var pListeners = [];
+		this._addMouseTouchListeners( pListeners, this.m_pBackgroundObjects );
+		this._addMouseTouchListeners( pListeners, this.m_pMiddlegroundObjects );
+		this._addMouseTouchListeners( pListeners, this.m_pForegroundObjects );
+		return pListeners;
+	}
+	
+	Scene.prototype._addMouseTouchListeners = function( pResult, pBasicDrawables )
+	{
+		for(var key in pBasicDrawables )
+		{
+			var oBasicDrawable = pBasicDrawables[key];
+			
+			if(oBasicDrawable.isListening)
+			{
+				pResult.push(oBasicDrawable);
+			}
+		}
+	}
+	
 	return Scene;
 	
 });

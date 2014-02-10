@@ -20,7 +20,7 @@ define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl )
 	
 	Point.prototype.getY = function()
 	{
-		return this.m_nX;
+		return this.m_nY;
 	}
 	
 	Point.prototype.setY = function( nY )

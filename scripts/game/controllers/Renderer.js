@@ -1,10 +1,10 @@
 
 
-define(["thirdparty/jquery","services/TemplateService", "game/canvas/GameCanvas"], function( jQuery, tpl, GameCanvas ) {
+define(["thirdparty/jquery","services/TemplateService"], function( jQuery, tpl ) {
 	
-	var Renderer = function() 
+	var Renderer = function( oGameCanvas ) 
 	{
-		this.m_oGameCanvas = new GameCanvas();
+		this.m_oGameCanvas = oGameCanvas;
 		this.m_o2DContext = this.m_oGameCanvas.get2DContext();
 		this.m_oStage;
 	}

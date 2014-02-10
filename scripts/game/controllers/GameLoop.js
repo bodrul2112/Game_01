@@ -1,15 +1,15 @@
 
 
 define(["thirdparty/jquery",
-        "services/TemplateService", 
-        "game/controllers/Renderer"], function( jQuery, tpl, Renderer ) {
+        "services/TemplateService"
+        ], function( jQuery, tpl ) {
 	
-	var GameLoop = function() 
+	var GameLoop = function( oRenderer ) 
 	{
 		this.m_bOn = false;
 		this.m_nTime = new Date().getTime();
 		
-		this.m_oRenderer = new Renderer();
+		this.m_oRenderer = oRenderer;
 	}
 
 	GameLoop.prototype.setStage = function( oStage )
